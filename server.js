@@ -1,16 +1,28 @@
 const express = require('express');
-const html_routes = require('./routes/html-routes');
-const api_routes = require('./routes/api-routes');
+const htmlRoutes = require('./routes/html-routes');
+const apiRoutes = require('./routes/api-routes');
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-app.use(express.urlencoded({extended : false}));
+// Body parser middleware to parse request bodies
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
-app.use(html_routes);
-app.use(api_routes);
 
+// Serve static files from the 'public' directory
+app.use(express.static('public'));
+
+// Test middleware to confirm middleware functionality
+app.use((req, res, next) => {
+    console.log('Middleware works');
+    next();
+});
+
+// Use the imported routes from the routes files
+app.use('/', htmlRoutes);
+app.use('/api', apiRoutes);
+
+// Start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
