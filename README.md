@@ -24,6 +24,9 @@ Then, navigate to http://localhost:3001 in your web browser to access the Note T
 Access this link to the deployed version via Heroku app
 " https://blue-note-taker-e493485068a3.herokuapp.com/ "
 
+## Walkthrough
+![look at this video](blue-note-walkthrough.mp4)
+
 ## Features 🌟
 - Write and save notes 
 - View previously saved notes 
